@@ -12,9 +12,7 @@ class Tables {
     this.db.query(sql, (erro) => {
         if(erro){
             console.log(erro);        
-        }else{
-            console.log('Tabela Atendimentos criada com sucesso');
-        }
+        };
     });
   }
 }
