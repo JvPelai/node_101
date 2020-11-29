@@ -1,5 +1,5 @@
 const {promisify} = require('util');
-const { deflateRaw, deflateSync } = require('zlib');
+
 
 module.exports = lista => {
     const setAsync = promisify(lista.set).bind(lista);
@@ -23,7 +23,7 @@ module.exports = lista => {
         },
 
         async deleta(chave){
-            await delAsync();
+            await delAsync(chave);
         }
     }
 }
