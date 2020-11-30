@@ -1,7 +1,11 @@
 const Usuario = require('./usuarios-modelo');
 const { InvalidArgumentError, InternalServerError } = require('../erros');
 const tokens = require('./tokens');
-
+const {EmailVerificacao} = require ('./emails')
+function geraEndereco(rota,id){
+  const baseURL = process.env.BASE_URL;
+  return `${baseURL}${rota}${id}`;
+}
 
 
 module.exports = {
@@ -17,6 +21,10 @@ module.exports = {
       await usuario.adicionaSenha(senha);
 
       await usuario.adiciona();
+
+      const endereco = geraEndereco('/usuario/verifica_email',usuario.id);
+      const emailVerificacao = new EmailVerificacao(usuario,endereco);
+      emailVerificacao.enviaEmail().catch(console.log)
 
       res.status(201).json();
     } catch (erro) {

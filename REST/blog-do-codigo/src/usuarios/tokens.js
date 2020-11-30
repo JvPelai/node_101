@@ -44,7 +44,7 @@ function invalidaTokenJWT(token, blocklist){
     return id;
 }
 
-async function invalidaTokenOpaco(token){
+async function invalidaTokenOpaco(token,whitelist){
     await whitelist.deleta(token)
 }
 
