@@ -3,3 +3,4 @@ node_modules
 db.sqlite
 .env
 redis-3.0.6
+dump.rdb
